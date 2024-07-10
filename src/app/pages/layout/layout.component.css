@@ -1,0 +1,25 @@
+body {
+    display: flex;
+}
+.nav-item {
+    margin: 15px 0;
+}
+.nav-link {
+    color: white !important;
+}
+.nav-link.active {
+    background-color: #6c757d !important;
+}
+.sidebar {
+    min-width: 250px;
+    background-color: #343a40;
+    height: 100vh;
+}
+.header {
+    background-color: #f8f9fa;
+    padding: 15px;
+    width: 100%;
+}
+.main-content {
+    flex: 1;
+}
