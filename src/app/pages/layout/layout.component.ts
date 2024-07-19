@@ -36,5 +36,8 @@ export class LayoutComponent implements OnInit {
   logout() {
     this.tokenService.logout();
     this.router.navigate(['auth/login']);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
 }

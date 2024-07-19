@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
           console.log('Login Response:', res);
           if (res.status) {
             this.tokenService.setToken(res.token);
+            localStorage.setItem('username', res.username); 
             this.primeNGConfig.ripple = true;
             this.messageService.add({
               severity: "success",
@@ -53,6 +54,7 @@ export class LoginComponent implements OnInit {
             });
             setTimeout(() => {
               this.router.navigateByUrl('/dashboard');
+              window.location.reload();
             }, 1000);
           } else {
             this.primeNGConfig.ripple = true;

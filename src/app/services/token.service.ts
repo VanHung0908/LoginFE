@@ -23,6 +23,7 @@ export class TokenService {
   logout() {
     // Xóa token từ localStorage
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
     // Xóa toàn bộ sessionStorage
     sessionStorage.clear();
   }

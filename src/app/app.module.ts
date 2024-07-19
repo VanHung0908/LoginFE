@@ -19,12 +19,14 @@ import { AuthGuard } from './guard/auth.guard';
 import { TokenService } from './services/token.service';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ChatboxComponent } from './chatbox/chatbox.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     NotfoundComponent,
     ProfileComponent,
+    ChatboxComponent,
   ],
   imports: [
     BrowserModule,
