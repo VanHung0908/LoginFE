@@ -9,6 +9,7 @@
     "test": "ng test",
     "serve:ssr:LoginFE": "node dist/login-fe/server/server.mjs",
     "postinstall": "ngcc"
+
   },
   "private": true,
   "dependencies": {
