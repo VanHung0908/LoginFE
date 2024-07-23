@@ -13,17 +13,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Reset local changes and pull latest code
-      run: |
-        cd /var/www/html/LoginFE
-        git fetch origin main
-        git reset --hard origin/main
-
-    - name: Build Angular project
-      run: |
-        cd /var/www/html/LoginFE
-        npx ng build --configuration production
-
     - name: Restart Nginx
       run: |
         sudo systemctl restart nginx
