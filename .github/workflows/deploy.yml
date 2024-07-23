@@ -13,12 +13,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Stash local changes and pull latest code
+    - name: Reset local changes and pull latest code
       run: |
         cd /var/www/html/LoginFE
-        git stash || true
-        git pull origin main
-        git stash pop || true
+        git fetch origin main
+        git reset --hard origin/main
 
     - name: Build Angular project
       run: |
