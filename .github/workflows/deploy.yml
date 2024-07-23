@@ -1,4 +1,4 @@
-name: Deploy to Server
+name: Deploy to VM
 
 on:
   push:
@@ -7,37 +7,22 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Build the project
-      run: npm run build
-
-    - name: Deploy to server
-      env:
-        SERVER_USER: ${{ secrets.SERVER_USER }} 
-        SERVER_IP:  ${{ secrets.SERVER_IP }}
-        DEPLOY_PATH:  ${{ secrets.DEPLOY_PATH }}
-        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}  
-
+    - name: Pull latest code in /var/www/html/LoginFE
       run: |
-        echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-        mkdir -p ~/.ssh
-        chmod 700 ~/.ssh
-        ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
-        rsync -azP --delete \
-          --exclude 'node_modules' \
-          --exclude '.github' \
-          --exclude '.env' \
-          ./ $SERVER_USER@$SERVER_IP:$DEPLOY_PATH
-        ssh $SERVER_USER@$SERVER_IP << 'EOF'
-          cd $DEPLOY_PATH
-          composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
-          php artisan migrate --force
-          npm install
-          npm run production
-          sudo systemctl restart nginx
-        EOF
+        cd /var/www/html/LoginFE
+        git pull origin main
+
+    - name: Build Angular project
+      run: |
+        cd /var/www/html/LoginFE
+        ng build 
+
+    - name: Restart Nginx
+      run: |
+        sudo systemctl restart nginx
