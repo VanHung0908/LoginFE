@@ -22,7 +22,3 @@ jobs:
       run: |
         cd /var/www/html/LoginFE
         ng build 
-
-    - name: Restart Nginx
-      run: |
-        sudo systemctl restart nginx
