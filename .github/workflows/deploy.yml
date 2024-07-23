@@ -13,6 +13,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: pull latest code
+      run: |
+        cd /var/www/html/LoginFE
+        git pull origin main
+
+    - name: Build Angular project
+      run: |
+        cd /var/www/html/LoginFE
+        ng build 
+
     - name: Restart Nginx
       run: |
         sudo systemctl restart nginx
