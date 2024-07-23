@@ -13,7 +13,7 @@ body {
 }
 .sidebar {
     min-width: 250px;
-    background-color: #CCC;
+    background-color: #343a40;
     height: 100vh;
 }
 .header {
