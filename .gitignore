@@ -40,6 +40,6 @@
 # # System files
 # .DS_Store
 # Thumbs.db
-#src/environments
+src/environments/
 
 .angular/cache/
