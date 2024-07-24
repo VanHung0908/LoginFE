@@ -112,6 +112,7 @@
 
 .chatbox-input {
   display: flex;
+  align-items: center;
   padding: 10px;
 }
 
@@ -123,6 +124,24 @@
   outline: none;
 }
 
+.file-upload-icon {
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  width: 30px; /* Kích thước nhỏ hơn so với input */
+  height: 30px; /* Kích thước nhỏ hơn so với input */
+  cursor: pointer;
+}
+
+.file-upload-icon i {
+  font-size: 30px; /* Kích thước biểu tượng */
+
+}
+
+.file-upload-icon input {
+  display: none; /* Ẩn input file */
+}
+
 .chatbox-input button {
   background-color: #18ac8c;
   color: white;
@@ -131,4 +150,12 @@
   margin-left: 5px;
   border-radius: 20px;
   cursor: pointer;
+}
+.file-name {
+  margin-left: 10px; /* Khoảng cách giữa biểu tượng và tên file */
+  font-size: 14px; /* Kích thước văn bản */
+  color: #333; /* Màu sắc văn bản */
+  white-space: nowrap; /* Đảm bảo văn bản không bị ngắt dòng */
+  overflow: hidden; /* Ẩn phần văn bản bị tràn ra ngoài */
+  text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu văn bản quá dài */
 }
