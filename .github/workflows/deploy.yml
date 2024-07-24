@@ -12,7 +12,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
+ - name: Set up Node.js
+      run: |
+        nvm use 20.14.0
+        node -v
+        npm -v
     - name: pull latest code
       run: |
         cd /var/www/html/LoginFE
